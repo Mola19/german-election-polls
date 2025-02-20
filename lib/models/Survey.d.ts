@@ -2,6 +2,7 @@ import { Institute } from './Institute';
 import { Parliament } from './Parliament';
 import { SurveyResult } from './SurveyResult';
 import { Tasker } from './Tasker';
+import { Method } from './Method';
 export type RawSurvey = {
     [key: string]: {
         Id: string;
@@ -14,6 +15,7 @@ export type RawSurvey = {
         Parliament_ID: string;
         Institute_ID: string;
         Tasker_ID: string;
+        Method_ID: string;
         Results: {
             [key: string]: number;
         };
@@ -30,5 +32,6 @@ export type Survey = {
     parliament: Parliament;
     institute: Institute;
     tasker: Tasker;
+    method: Method;
     results: SurveyResult[];
 };

@@ -19,6 +19,10 @@ export function include(including: DataType[]): (data: PollData) => PollData {
           newData.taskers = d.taskers;
           break;
 
+        case DataType.Methods:
+          newData.methods = d.methods;
+          break;
+
         case DataType.Parties:
           newData.parties = d.parties;
           break;

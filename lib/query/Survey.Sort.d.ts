@@ -4,6 +4,10 @@ export declare namespace Tasker {
     function byID(order?: Order): (data: PollData) => PollData;
     function byName(order?: Order): (data: PollData) => PollData;
 }
+export declare namespace Method {
+    function byID(order?: Order): (data: PollData) => PollData;
+    function byName(order?: Order): (data: PollData) => PollData;
+}
 export declare namespace Institute {
     function byID(order?: Order): (data: PollData) => PollData;
     function byName(order?: Order): (data: PollData) => PollData;

@@ -5,6 +5,7 @@ import { PollData } from './models/PollData';
 import { Survey } from './models/Survey';
 import { SurveyResult } from './models/SurveyResult';
 import { Tasker } from './models/Tasker';
+import { Method } from './models/Method';
 import { PollHandler } from './pollHandler';
 import { DataType, Order, Query } from './query';
 
@@ -21,4 +22,5 @@ export {
   Survey,
   SurveyResult,
   Tasker,
+  Method
 };

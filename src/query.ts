@@ -7,6 +7,7 @@ export enum DataType {
   Parliaments,
   Institutes,
   Taskers,
+  Methods,
   Parties,
   Surveys,
 }
@@ -34,6 +35,7 @@ export namespace Query {
               parliaments: d.parliaments,
               institutes: d.institutes,
               taskers: d.taskers,
+              methods: d.methods,
               parties: d.parties,
               surveys,
             } as PollData;
@@ -50,6 +52,7 @@ export namespace Query {
               parliaments: d.parliaments,
               institutes: d.institutes,
               taskers: d.taskers,
+              methods: d.methods,
               parties: d.parties,
               surveys,
             } as PollData;
@@ -67,6 +70,7 @@ export namespace Query {
               parliaments: d.parliaments,
               institutes: d.institutes,
               taskers: d.taskers,
+              methods: d.methods,
               parties: d.parties,
               surveys,
             } as PollData;
@@ -83,6 +87,7 @@ export namespace Query {
               parliaments: d.parliaments,
               institutes: d.institutes,
               taskers: d.taskers,
+              methods: d.methods,
               parties: d.parties,
               surveys,
             } as PollData;
@@ -103,6 +108,7 @@ export namespace Query {
               parliaments: d.parliaments,
               institutes: d.institutes,
               taskers: d.taskers,
+              methods: d.methods,
               parties: d.parties,
               surveys,
             } as PollData;
@@ -119,6 +125,7 @@ export namespace Query {
               parliaments: d.parliaments,
               institutes: d.institutes,
               taskers: d.taskers,
+              methods: d.methods,
               parties: d.parties,
               surveys,
             } as PollData;
@@ -137,6 +144,7 @@ export namespace Query {
               parliaments: d.parliaments,
               institutes: d.institutes,
               taskers: d.taskers,
+              methods: d.methods,
               parties: d.parties,
               surveys,
             } as PollData;
@@ -153,6 +161,81 @@ export namespace Query {
               parliaments: d.parliaments,
               institutes: d.institutes,
               taskers: d.taskers,
+              methods: d.methods,
+              parties: d.parties,
+              surveys,
+            } as PollData;
+          };
+        }
+      }
+    }
+
+    export namespace Method {
+      export namespace ID {
+        export function is(ids: number[]): (data: PollData) => PollData {
+          return (d: PollData) => {
+            const surveys = d.surveys?.filter((survey: Survey) => {
+              return ids.includes(survey.method.id);
+            });
+
+            return {
+              parliaments: d.parliaments,
+              institutes: d.institutes,
+              taskers: d.taskers,
+              methods: d.methods,
+              parties: d.parties,
+              surveys,
+            } as PollData;
+          };
+        }
+
+        export function isNot(ids: number[]): (data: PollData) => PollData {
+          return (d: PollData) => {
+            const surveys = d.surveys?.filter((survey: Survey) => {
+              return !ids.includes(survey.method.id);
+            });
+
+            return {
+              parliaments: d.parliaments,
+              institutes: d.institutes,
+              taskers: d.taskers,
+              methods: d.methods,
+              parties: d.parties,
+              surveys,
+            } as PollData;
+          };
+        }
+      }
+
+      export namespace Name {
+        export function is(names: string[]): (data: PollData) => PollData {
+          return (d: PollData) => {
+            const surveys = d.surveys?.filter((survey: Survey) => {
+              return names.includes(survey.method.name);
+            });
+
+            return {
+              parliaments: d.parliaments,
+              institutes: d.institutes,
+              taskers: d.taskers,
+              methods: d.methods,
+              parties: d.parties,
+              surveys,
+            } as PollData;
+          };
+        }
+
+        export function isNot(names: string[]): (data: PollData) => PollData {
+          return (d: PollData) => {
+            const surveys = d.surveys?.filter((survey: Survey) => {
+              return !names.includes(survey.method.name);
+            });
+
+            return {
+              parliaments: d.parliaments,
+              institutes: d.institutes,
+              taskers: d.taskers,
+              methods: d.methods,
               parties: d.parties,
               surveys,
             } as PollData;
@@ -178,6 +261,7 @@ export namespace Query {
             parliaments: d.parliaments,
             institutes: d.institutes,
             taskers: d.taskers,
+            methods: d.methods,
             parties: d.parties,
             surveys,
           } as PollData;
@@ -200,6 +284,7 @@ export namespace Query {
             parliaments: d.parliaments,
             institutes: d.institutes,
             taskers: d.taskers,
+            methods: d.methods,
             parties: d.parties,
             surveys,
           } as PollData;
@@ -216,6 +301,7 @@ export namespace Query {
             parliaments: d.parliaments,
             institutes: d.institutes,
             taskers: d.taskers,
+            methods: d.methods,
             parties: d.parties,
             surveys,
           } as PollData;
@@ -232,6 +318,7 @@ export namespace Query {
             parliaments: d.parliaments,
             institutes: d.institutes,
             taskers: d.taskers,
+            methods: d.methods,
             parties: d.parties,
             surveys,
           } as PollData;
@@ -248,6 +335,7 @@ export namespace Query {
             parliaments: d.parliaments,
             institutes: d.institutes,
             taskers: d.taskers,
+            methods: d.methods,
             parties: d.parties,
             surveys,
           } as PollData;
@@ -266,6 +354,7 @@ export namespace Query {
             parliaments: d.parliaments,
             institutes: d.institutes,
             taskers: d.taskers,
+            methods: d.methods,
             parties: d.parties,
             surveys,
           } as PollData;
@@ -282,6 +371,7 @@ export namespace Query {
             parliaments: d.parliaments,
             institutes: d.institutes,
             taskers: d.taskers,
+            methods: d.methods,
             parties: d.parties,
             surveys,
           } as PollData;
@@ -298,6 +388,7 @@ export namespace Query {
             parliaments: d.parliaments,
             institutes: d.institutes,
             taskers: d.taskers,
+            methods: d.methods,
             parties: d.parties,
             surveys,
           } as PollData;
@@ -314,6 +405,7 @@ export namespace Query {
             parliaments: d.parliaments,
             institutes: d.institutes,
             taskers: d.taskers,
+            methods: d.methods,
             parties: d.parties,
             surveys,
           } as PollData;
@@ -330,6 +422,7 @@ export namespace Query {
             parliaments: d.parliaments,
             institutes: d.institutes,
             taskers: d.taskers,
+            methods: d.methods,
             parties: d.parties,
             surveys,
           } as PollData;
@@ -349,6 +442,7 @@ export namespace Query {
               parliaments: d.parliaments,
               institutes: d.institutes,
               taskers: d.taskers,
+              methods: d.methods,
               parties: d.parties,
               surveys,
             } as PollData;
@@ -365,6 +459,7 @@ export namespace Query {
               parliaments: d.parliaments,
               institutes: d.institutes,
               taskers: d.taskers,
+              methods: d.methods,
               parties: d.parties,
               surveys,
             } as PollData;
@@ -383,6 +478,7 @@ export namespace Query {
               parliaments: d.parliaments,
               institutes: d.institutes,
               taskers: d.taskers,
+              methods: d.methods,
               parties: d.parties,
               surveys,
             } as PollData;
@@ -399,6 +495,7 @@ export namespace Query {
               parliaments: d.parliaments,
               institutes: d.institutes,
               taskers: d.taskers,
+              methods: d.methods,
               parties: d.parties,
               surveys,
             } as PollData;

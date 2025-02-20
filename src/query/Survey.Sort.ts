@@ -73,6 +73,76 @@ export namespace Tasker {
   }
 }
 
+export namespace Method {
+  export function byID(order: Order = Order.Asc): (data: PollData) => PollData {
+    let sortFunc: (a: Survey, b: Survey) => number;
+    switch (order) {
+      case Order.Asc:
+        sortFunc = (a: Survey, b: Survey) => {
+          if (a.method.id < b.method.id) return -1;
+          else if (a.method.id > b.method.id) return 1;
+          else return 0;
+        };
+        break;
+
+      case Order.Desc:
+        sortFunc = (a: Survey, b: Survey) => {
+          if (a.method.id > b.method.id) return -1;
+          else if (a.method.id < b.method.id) return 1;
+          else return 0;
+        };
+        break;
+
+      default:
+        break;
+    }
+
+    return (d: PollData) => {
+      return {
+        parliaments: d.parliaments,
+        institutes: d.institutes,
+        methods: d.methods,
+        parties: d.parties,
+        surveys: d.surveys.sort(sortFunc),
+      } as PollData;
+    };
+  }
+
+  export function byName(order: Order = Order.Asc): (data: PollData) => PollData {
+    let sortFunc: (a: Survey, b: Survey) => number;
+    switch (order) {
+      case Order.Asc:
+        sortFunc = (a: Survey, b: Survey) => {
+          if (a.method.name < b.method.name) return -1;
+          else if (a.method.name > b.method.name) return 1;
+          else return 0;
+        };
+        break;
+
+      case Order.Desc:
+        sortFunc = (a: Survey, b: Survey) => {
+          if (a.method.name > b.method.name) return -1;
+          else if (a.method.name < b.method.name) return 1;
+          else return 0;
+        };
+        break;
+
+      default:
+        break;
+    }
+
+    return (d: PollData) => {
+      return {
+        parliaments: d.parliaments,
+        institutes: d.institutes,
+        methods: d.methods,
+        parties: d.parties,
+        surveys: d.surveys.sort(sortFunc),
+      } as PollData;
+    };
+  }
+}
+
 export namespace Institute {
   export function byID(order: Order = Order.Asc): (data: PollData) => PollData {
     let sortFunc: (a: Survey, b: Survey) => number;
@@ -101,7 +171,7 @@ export namespace Institute {
       return {
         parliaments: d.parliaments,
         institutes: d.institutes,
-        taskers: d.taskers,
+        methods: d.methods,
         parties: d.parties,
         surveys: d.surveys.sort(sortFunc),
       } as PollData;
@@ -135,7 +205,7 @@ export namespace Institute {
       return {
         parliaments: d.parliaments,
         institutes: d.institutes,
-        taskers: d.taskers,
+        methods: d.methods,
         parties: d.parties,
         surveys: d.surveys.sort(sortFunc),
       } as PollData;
@@ -171,7 +241,7 @@ export namespace Parliament {
       return {
         parliaments: d.parliaments,
         institutes: d.institutes,
-        taskers: d.taskers,
+        methods: d.methods,
         parties: d.parties,
         surveys: d.surveys.sort(sortFunc),
       } as PollData;
@@ -205,7 +275,7 @@ export namespace Parliament {
       return {
         parliaments: d.parliaments,
         institutes: d.institutes,
-        taskers: d.taskers,
+        methods: d.methods,
         parties: d.parties,
         surveys: d.surveys.sort(sortFunc),
       } as PollData;
@@ -239,7 +309,7 @@ export namespace Parliament {
       return {
         parliaments: d.parliaments,
         institutes: d.institutes,
-        taskers: d.taskers,
+        methods: d.methods,
         parties: d.parties,
         surveys: d.surveys.sort(sortFunc),
       } as PollData;
@@ -273,7 +343,7 @@ export namespace Parliament {
       return {
         parliaments: d.parliaments,
         institutes: d.institutes,
-        taskers: d.taskers,
+        methods: d.methods,
         parties: d.parties,
         surveys: d.surveys.sort(sortFunc),
       } as PollData;
@@ -308,7 +378,7 @@ export function byRelease(order: Order = Order.Asc): (data: PollData) => PollDat
     return {
       parliaments: d.parliaments,
       institutes: d.institutes,
-      taskers: d.taskers,
+      methods: d.methods,
       parties: d.parties,
       surveys: d.surveys.sort(sortFunc),
     } as PollData;
@@ -342,7 +412,7 @@ export function byParticipants(order: Order = Order.Asc): (data: PollData) => Po
     return {
       parliaments: d.parliaments,
       institutes: d.institutes,
-      taskers: d.taskers,
+      methods: d.methods,
       parties: d.parties,
       surveys: d.surveys.sort(sortFunc),
     } as PollData;

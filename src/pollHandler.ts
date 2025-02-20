@@ -6,6 +6,7 @@ import { EmptyPollData, PollData } from './models/PollData';
 import { Survey } from './models/Survey';
 import { SurveyResult } from './models/SurveyResult';
 import { EmptyTasker, Tasker } from './models/Tasker';
+import { EmptyMethod, Method } from './models/Method';
 
 export class PollHandler {
   private _data?: PollData;
@@ -39,6 +40,7 @@ export class PollHandler {
       const rawParliaments = rawData.Parliaments;
       const rawInstitutes = rawData.Institutes;
       const rawTaskers = rawData.Taskers;
+      const rawMethods = rawData.Methods;
       const rawParties = rawData.Parties;
       const rawSurveys = rawData.Surveys;
 
@@ -71,6 +73,17 @@ export class PollHandler {
         if (Object.prototype.hasOwnProperty.call(rawTaskers, key)) {
           const element = rawTaskers[key];
           taskers.push({
+            id: Number(key),
+            name: element.Name as unknown as string,
+          });
+        }
+      }
+
+      const methods: Method[] = [];
+      for (const key in rawMethods) {
+        if (Object.prototype.hasOwnProperty.call(rawMethods, key)) {
+          const element = rawMethods[key];
+          methods.push({
             id: Number(key),
             name: element.Name as unknown as string,
           });
@@ -116,6 +129,10 @@ export class PollHandler {
             return t.id === Number(element.Tasker_ID as unknown as string);
           });
 
+          const method = methods.find((t) => {
+            return t.id === Number(element.Method_ID as unknown as string);
+          });
+          
           const institute = institutes.find((i) => {
             return i.id === Number(element.Institute_ID as unknown as string);
           });
@@ -131,6 +148,7 @@ export class PollHandler {
             parliament: parliament ?? EmptyParliament,
             institute: institute ?? EmptyInstitute,
             tasker: tasker ?? EmptyTasker,
+            method: method ?? EmptyMethod,
             results,
           });
         }
@@ -139,6 +157,7 @@ export class PollHandler {
           parliaments,
           institutes,
           taskers,
+          methods,
           parties,
           surveys,
         };

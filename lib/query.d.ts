@@ -5,8 +5,9 @@ export declare enum DataType {
     Parliaments = 0,
     Institutes = 1,
     Taskers = 2,
-    Parties = 3,
-    Surveys = 4
+    Methods = 3,
+    Parties = 4,
+    Surveys = 5
 }
 export declare enum Order {
     Asc = 0,
@@ -27,6 +28,16 @@ export declare namespace Query {
             }
         }
         namespace Tasker {
+            namespace ID {
+                function is(ids: number[]): (data: PollData) => PollData;
+                function isNot(ids: number[]): (data: PollData) => PollData;
+            }
+            namespace Name {
+                function is(names: string[]): (data: PollData) => PollData;
+                function isNot(names: string[]): (data: PollData) => PollData;
+            }
+        }
+        namespace Method {
             namespace ID {
                 function is(ids: number[]): (data: PollData) => PollData;
                 function isNot(ids: number[]): (data: PollData) => PollData;
